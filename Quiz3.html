@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evolution books store</title>
+    <style>
+        body {
+            font-family: sans-serif,'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin: 0;
+            padding-top: 100px;
+        }
+        
+        .navbar {
+            display: flex;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            z-index: 1000;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 6px 10px;
+            box-shadow: #000000;
+        }
+        .navbar .logo {
+            display: flex;
+            top: 0;
+            align-items: center;
+            font-weight: bold;
+            font-family: 'Lucida Sans Unicode';
+            font-size: 30px;
+            margin-left: 80px;
+        }
+        .navbar .logo img {
+            height: 45px;
+            margin-right: 10px;
+        }
+        .navbar .menu {
+            display: flex;
+            gap: 20px;
+            margin-top: 0px;
+        }
+        .navbar .menu a {
+            display: inline-flex;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            align-items: center;
+            margin: 0 20px;
+            padding: 10px 18px;
+            color: #000000;
+            border-radius: 50px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .navbar .menu a:hover {
+          background-color: rgba(0, 0, 0, 0.801);
+          color: #ffffff;
+        }
+        .content {
+            margin-top: 80px;
+            text-align: center;
+            justify-items: center;
+        }
+
+        .content img {
+            width: 180px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .content img:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px #000000;
+        }
+    
+        .table-container {
+            margin: 20px auto;
+            max-width: 90%;
+            overflow-x: auto;
+        }
+
+        .table-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            background-color: white;
+            padding: 50px;
+            border-radius: 15px; /* Membuat sudut melengkung */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Memberikan efek bayangan */
+        }
+
+        h3 {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .lihat-semua {
+          margin: 20px 0;
+        }
+
+        .lihat-semua a {
+            font-size: 15px;
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 100px;
+            text-align: right;
+            align-items: center;
+        }
+
+        .lihat-semua a:hover {
+            text-decoration: underline;
+        }
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Agar elemen sejajar di atas */
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            text-align: center;
+            width: 200px;
+            height: 340px;
+            border-radius: 10px; /* Membuat sudut melengkung pada setiap kartu */
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Memberikan efek bayangan */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card img {
+            width: 100%;
+            height: 264px;
+            object-fit: cover;
+        }
+        .card img:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px #000000;
+        }
+        .card p {
+            margin: 0;
+            padding: 5px 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            flex-grow: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .card .price {
+          margin-top: 0px;
+            color: #000000;
+            font-size: 8px;
+            font-weight: bold;
+            text-align: center;
+
+        }
+        .card .price del {
+          color: #999;
+          font-size: 8px;
+        }
+        .card .discon {
+          margin-top: 0px;
+            color: #ff0000;
+            font-size: 8px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .search-box-container {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            background-color: #f1f1f1;
+            margin-right: 80px;
+        }
+        .search-box-container input[type="text"] {
+            width: 250px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 50px 0 0 50px;
+        }
+        .search-box-container button {
+            padding: 10px 20px;
+            border: none;
+            background-color: black;
+            color: white;
+            border-radius: 0 50px 50px 0;
+            cursor: pointer;
+        }
+        .search-box-container button:hover {
+            background-color: #333;
+        }
+
+        .footer-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .footer-logo {
+          height: 25px;
+          margin-bottom: 20px;
+        }
+
+
+       footer {
+          background-color: #3a3939;
+          color: rgb(255, 252, 252);
+          padding: 20px;
+          font-size: 15px;
+
+        }
+
+        .footer-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .footer-left, .footer-right {
+          flex: 1;
+          padding: 10px;
+        }
+
+        .footer-left {
+          text-align: left;
+        }
+
+        .footer-left .footer-logo {
+          height: 50px;
+          margin-bottom: 10px;
+        }
+
+        .footer-right {
+          text-align: right;
+        }
+
+        .footer-right p {
+          margin: 5px 0;
+        }
+
+        footer a {
+          color: #00a2ff;
+          text-decoration: none;
+          margin: 0 5px;
+        }
+
+        footer a:hover {
+          text-decoration: underline;
+        }
+
+        
+    </style>
+</head>
+  <body>
+    <body>
+        <div class="navbar">
+            <div class="logo">
+              <a href="Quiz3.html">
+                <img src="evobooks4.png" alt="Logo">
+              </a>
+            </div>
+            <div class="menu">
+                <a href="#">HOME</a>
+                <a href="quiz3_list_buku.html">BUKU</a>
+                <a href="quiz3_list_majalah.html">MAJALAH</a>
+                <a href="quiz3_list_koran.html">KORAN</a>
+            </div>
+            <div class="search-box-container">
+              <input type="text" placeholder="Cari buku, majalah, atau koran">
+              <button>Cari</button>
+            </div>
+        </div>
+      <h3>Buku</h3>
+        <div class="lihat-semua">
+        <a href="semuabuku.html">Lihat semua</a>
+      </div>
+      <div class="table-container">
+        <div class="card">
+          <img src="sampul1dasarinformatika.jpg" />
+          <p>Dasar-Dasar Teknik Informatika</p>
+          <p class="discon">Harga Diskon: Rp 110.000</p>
+            <p class="price">Harga Asli: <del>Rp 130.000</del></p>
+        </div>
+        <div class="card">
+          <img src="sampul2dasarinformatika.jpg" />
+          <p>Informatika SMK</p>
+          <p class="discon">Harga Diskon: Rp 120.000</p>
+            <p class="price">Harga Asli: <del>Rp 150.000</del></p>
+        </div>
+        <div class="card">
+          <img src="sampul3dasarinformatika.jpg"/>
+          <p>Pemrograman Arduino dan Robotik</p>
+          <p class="price">Rp.150.000</p>
+        </div>
+        <div class="card">
+          <img src="sampul4dasarinformatika.jpg" />
+          <p>Project Sistem Kontrol Berbasis Arduino</p>
+          <p class="price">Rp.150.000</p>
+        </div>
+      </div>
+      <h3>Majalah</h3>
+        <div class="lihat-semua">
+        <a href="semuamajalah.html">Lihat semua</a>
+      </div>      
+      <div class="table-container">
+        <div class="card">
+          <img src="sampulmajalah1.jpg" />
+          <p>Majalah Komputer</p>
+          <p class="price">Rp.90.000</p>
+        </div>
+        <div class="card">
+          <img src="sampulmajalah2.jpg" />
+          <p>Majalah Komputer</p>
+          <p class="discon">Harga Diskon: Rp 90.000</p>
+          <p class="price">Harga Asli: <del>Rp 105.000</del></p>
+        </div>
+        <div class="card">
+          <img src="sampulmajalah4.jpg" />
+          <p>Dasar Design Grafis</p>
+          <p class="price">Rp.100.000</p>
+        </div>
+        <div class="card">
+          <img src="sampulmajalah5.jpg"/>
+          <p>Dasar Design Grafis Jilid 1</p>
+          <p class="price">Rp.110.000</p>
+        </div>
+      </div>
+      <h3>Koran</h3>
+         <div class="lihat-semua">
+        <a href="semuakoran.html">Lihat semua</a>
+      </div>     
+      <div class="table-container">
+        <div class="card">
+          <img src="sampulkoran1.jpg"/>
+          <p>Koran Info Komputer</p>
+          <p class="price">Rp.90.000</p>
+        </div>
+        <div class="card">
+          <img src="sampulkoran2.jpg"/>
+          <p>Koran Info Komputer</p>
+          <p class="price">Rp.90.000</p>
+        </div>
+        <div class="card">
+          <img src="sampulkoran3.jpg">
+          <p>Koran Info Komputer</p>
+          <p class="price">Rp.90.000</p>
+        </div>
+        <div class="card">
+          <img src="sampulkoran4.jpg">
+          <p>Koran Info Komputer</p>
+          <p class="price">Rp.90.000</p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-container">
+
+        <div class="footer-left">
+           <img src="evobooks5.png" alt="Logo" class="footer-logo">
+            <p><strong>Address: </strong> Kedu, Temanggung</p>
+            <p><strong>Phone: </strong> +6282-3611-2511</p>
+            <p><strong>Email: </strong> evo2025@gmail.com</p>
+        </div>
+      <div class="footer-right">
+        <p>&copy; <strong>Evolution.</strong> All rights reserved</p>
+        <a href="/privacy-policy">Privacy Policy</a> | 
+        <a href="/terms-of-service">Terms of Service</a>
+      </div>
+    </footer>
+  </body>
+</html>
