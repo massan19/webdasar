@@ -1,0 +1,77 @@
+body {
+  background: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.novel-detail-container {
+  max-width: 1100px;
+  margin: 30px auto;
+  background: #fff;
+  border-radius: 0px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  padding: 40px 40px 32px 40px;
+}
+
+.novel-detail {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.novel-cover img {
+  width: 320px;
+  height: 440px;
+  object-fit: cover;
+  border-radius: 0px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.novel-info {
+  flex: 1;
+  margin-top: 12px;
+}
+
+.novel-info p {
+  margin: 10px 0;
+  font-size: 1.15em;
+  color: #333;
+}
+
+.novel-price {
+  color: #494949;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 18px 0 24px 0;
+}
+
+.btn-beli {
+  background: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 36px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-beli:hover {
+  background: #585858;
+}
+
+.novel-sinopsis {
+  margin-top: 40px;
+}
+
+.novel-sinopsis h2 {
+  color: #222;
+  margin-bottom: 14px;
+  font-size: 1.3em;
+}
+
+.novel-sinopsis p {
+  color: #444;
+  font-size: 1.08em;
+  line-height: 1.7;
+}
